@@ -37,7 +37,7 @@ services:
   
   redis:
     image: redis:7.4.2
-    container_name: redis_brocker
+    container_name: redis_broker
     ports:
       - "6379:6379"
     restart: always

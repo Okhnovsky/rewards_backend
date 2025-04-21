@@ -14,7 +14,7 @@
 - Daphne
 - Nginx
 - Celery
-- Redis (message brocker and result backend)
+- Redis (message broker and result backend)
 
 
 ## Едпоинты
