@@ -42,13 +42,13 @@ cd rewards_backend
 ```
 - В данной директории создаем файл .env со следующими переменными:
 ```
-SECRET_KEY='django-insecure-j5#hn+(r%_90+lrcua9w1866w^1!@4(&c@$+1wpz6iij7_7vo#'
-DB_NAME='postgres'
-POSTGRES_USER='postgres'
-POSTGRES_PASSWORD='postgres'
-DB_HOST='db'
-DB_PORT='5432'
-CELERY_BROKER_URL='redis://redis_brocker:6379/0'
+SECRET_KEY=<>
+DB_NAME=<>
+POSTGRES_USER=<>
+POSTGRES_PASSWORD=<>
+DB_HOST=<>
+DB_PORT=<>
+CELERY_BROKER_URL=<>
 ```
 - Запускаем контейнеры docker compose
 ```
