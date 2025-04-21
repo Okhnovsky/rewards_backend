@@ -1,0 +1,45 @@
+volumes:
+  static:
+  pg_data:
+
+services:
+
+  db:
+    container_name: db
+    image: postgres:17.0-alpine
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+
+  rewards_backend:
+    container_name: rewards_backend
+    restart: always
+    build: ./rewards_backend/
+    env_file:
+      - .env
+    volumes:
+      - static:/app/static/
+    depends_on:
+      - db
+  
+  nginx:
+    image: nginx:1.21.3-alpine
+    container_name: nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - static:/var/html/static/
+    depends_on:
+      - rewards_backend
+  
+  redis:
+    image: redis:7.4.2
+    container_name: redis_brocker
+    ports:
+      - "6379:6379"
+    restart: always
+    depends_on:
+      - rewards_backend
